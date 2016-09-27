@@ -8,6 +8,11 @@ public class  FastaSequence
 {
 	private String mySequence;
 	private String sequence;
+	public FastaSequence()
+	{
+		sequence = "";
+		mySequence = "";
+	}
 	public static List<FastaSequence> readFastaFile(String filepath) throws Exception
 	{
 		String path = filepath;
@@ -49,8 +54,7 @@ public class  FastaSequence
 					}
 					FastaSequence tmp_seq = new FastaSequence();
 					tmp_seq.mySequence = Total;
-					sequenceList.add(tmp_seq);
-        	
+					sequenceList.add(tmp_seq);        	
 				}
 			}
 		}
@@ -59,8 +63,7 @@ public class  FastaSequence
 			e.printStackTrace();
 		}
 		return sequenceList;
-	}
-	
+	}	
 	public String getHeader()
 	{		
 		String header1 = mySequence.split("\n")[0];
@@ -70,14 +73,12 @@ public class  FastaSequence
 	public String getSequence() 
 	{	
 		String[] Seq = mySequence.split("\n");
-		String sequence = "";
 		String out = "";
 		for (int x= 1; x< Seq.length; x++)
 		{			 
 			sequence = sequence + Seq[x];
 			out = out + Seq[x] + "\n";
 		}
-		this.sequence = sequence;
 		return out;
 	}
 	public float getGCRatio()
